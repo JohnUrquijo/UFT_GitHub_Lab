@@ -1,15 +1,17 @@
-name: Probar Runner UFT
+name: Ejecutar UFT desde GitHub
 
 on:
   workflow_dispatch:
 
 jobs:
-  test-runner:
+  run-uft:
     runs-on: self-hosted
 
     steps:
-      - name: Validar maquina
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Ejecutar script UFT
+        shell: powershell
         run: |
-          hostname
-          whoami
-          echo "Runner funcionando correctamente"
+          & "C:\Program Files (x86)\OpenText\Functional Testing\bin\UFTBatchRunnerCMD.exe" -source "C:\UFT_GitHub_Lab\ScriptPruebaAdvantage"
