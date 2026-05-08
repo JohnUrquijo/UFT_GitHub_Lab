@@ -1,4 +1,4 @@
-name: Ejecutar UFT desde GitHub
+name: Ejecutar UFT desde GitHub John Urquijo
 
 on:
   workflow_dispatch:
@@ -11,7 +11,12 @@ jobs:
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
+      - name: Crear carpeta de resultados
+        shell: powershell
+        run: |
+          New-Item -ItemType Directory -Force -Path "C:\UFT_GitHub_Lab\Results\ScriptPruebaAdvantage"
+
       - name: Ejecutar script UFT
         shell: powershell
         run: |
-          & "C:\Program Files (x86)\OpenText\Functional Testing\bin\UFTBatchRunnerCMD.exe" -source "C:\UFT_GitHub_Lab\ScriptPruebaAdvantage"
+          & "C:\Program Files (x86)\OpenText\Functional Testing\bin\UFTBatchRunnerCMD.exe" -source "C:\UFT_GitHub_Lab\ScriptPruebaAdvantage" -result "C:\UFT_GitHub_Lab\Results\ScriptPruebaAdvantage"
