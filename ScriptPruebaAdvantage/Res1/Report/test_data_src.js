@@ -1,0 +1,1 @@
+﻿var __testDataSource={items:[{dataFilePath:'Default.xlsx',dataFileFormat:'excel',dataFileFolder:'C:\\UFT_GitHub_Lab\\ScriptPruebaAdvantage\\Res1',namePairs:[]}]};
