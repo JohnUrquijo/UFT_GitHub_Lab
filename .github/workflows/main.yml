@@ -26,7 +26,8 @@ jobs:
         with:
           name: Resultados-UFT
           path: C:\UFT_GitHub_Lab\Results\ScriptPruebaAdvantage
- octane-integration:
+
+  octane-integration:
     needs: run-uft
     runs-on: self-hosted
 
