@@ -26,3 +26,19 @@ jobs:
         with:
           name: Resultados-UFT
           path: C:\UFT_GitHub_Lab\Results\ScriptPruebaAdvantage
+ octane-integration:
+    needs: run-uft
+    runs-on: self-hosted
+
+    steps:
+      - name: Publicar ejecución en Octane
+        uses: opentext/sdp-github-actions-integration@v25.3.0
+        with:
+          octaneUrl: ${{ secrets.OCTANE_URL }}
+          octaneSharedSpace: ${{ secrets.OCTANE_SHARED_SPACE }}
+          octaneWorkspace: ${{ secrets.OCTANE_WORKSPACE }}
+          octaneClientId: ${{ secrets.OCTANE_CLIENT_ID }}
+          octaneClientSecret: ${{ secrets.OCTANE_CLIENT_SECRET }}
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+          serverBaseUrl: https://github.com/JohnUrquijo/UFT_GitHub_Lab
+          pipelineNamePattern: '${workflow_name}'
